@@ -81,7 +81,7 @@ LookAndFeel_V4::ColourScheme LookAndFeel_V4::getDarkColourScheme()
 {
     return { 0xff323e44, 0xff263238, 0xff323e44,
              0xff8e989b, 0xffffffff, 0xff42a2c8,
-             0xffffffff, 0xff181f22, 0xffffffff };
+             0xffffffff, 0xffbfbfbf, 0xffffffff };
 }
 
 LookAndFeel_V4::ColourScheme LookAndFeel_V4::getMidnightColourScheme()
