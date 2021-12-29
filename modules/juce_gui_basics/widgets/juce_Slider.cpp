@@ -23,6 +23,8 @@
   ==============================================================================
 */
 
+#include <optional>
+
 namespace juce
 {
 
@@ -1260,6 +1262,7 @@ public:
     TextEntryBoxPosition textBoxPos;
     String textSuffix;
     int numDecimalPlaces = 7;
+    std::optional<int> numDecimalPlacesOverride;
     int textBoxWidth = 80, textBoxHeight = 20;
     IncDecButtonMode incDecButtonMode = incDecButtonsNotDraggable;
     ModifierKeys::Flags modifierToSwapModes = ModifierKeys::ctrlAltCommandModifiers;
@@ -1575,11 +1578,12 @@ String Slider::getTextFromValue (double v)
 {
     auto getText = [this] (double val)
     {
-        if (textFromValueFunction != nullptr)
+        if (textFromValueFunction != nullptr && !pimpl->numDecimalPlacesOverride)
             return textFromValueFunction (val);
 
-        if (getNumDecimalPlacesToDisplay() > 0)
-            return String (val, getNumDecimalPlacesToDisplay());
+        const auto decimalPlaces = pimpl->numDecimalPlacesOverride.value_or(getNumDecimalPlacesToDisplay());
+        if (decimalPlaces > 0)
+            return String (val, decimalPlaces);
 
         return String (roundToInt (val));
     };
@@ -1623,7 +1627,7 @@ int Slider::getNumDecimalPlacesToDisplay() const noexcept   { return pimpl->numD
 
 void Slider::setNumDecimalPlacesToDisplay (int decimalPlacesToDisplay)
 {
-    pimpl->numDecimalPlaces = decimalPlacesToDisplay;
+    pimpl->numDecimalPlacesOverride = decimalPlacesToDisplay;
     updateText();
 }
 
