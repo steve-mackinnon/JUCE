@@ -572,7 +572,8 @@ public:
             updateTextBoxEnablement();
             valueBox->onTextChange = [this] { textChanged(); };
 
-            if (style == LinearBar || style == LinearBarVertical)
+            if (style == RotaryHorizontalDrag || style == RotaryVerticalDrag || style == Rotary ||
+                style == LinearBar || style == LinearBarVertical)
             {
                 valueBox->addMouseListener (&owner, false);
                 valueBox->setMouseCursor (MouseCursor::ParentCursor);

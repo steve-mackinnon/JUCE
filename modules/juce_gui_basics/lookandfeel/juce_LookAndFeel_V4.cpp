@@ -1389,7 +1389,7 @@ void LookAndFeel_V4::initialiseColours()
         Slider::textBoxTextColourId,                currentColourScheme.getUIColour (ColourScheme::UIColour::defaultText).getARGB(),
         Slider::textBoxBackgroundColourId,          currentColourScheme.getUIColour (ColourScheme::UIColour::widgetBackground).withAlpha (0.0f).getARGB(),
         Slider::textBoxHighlightColourId,           currentColourScheme.getUIColour (ColourScheme::UIColour::defaultFill).withAlpha (0.4f).getARGB(),
-        Slider::textBoxOutlineColourId,             currentColourScheme.getUIColour (ColourScheme::UIColour::outline).getARGB(),
+        Slider::textBoxOutlineColourId,             currentColourScheme.getUIColour (ColourScheme::UIColour::outline).withAlpha(0.f).getARGB(),
 
         ResizableWindow::backgroundColourId,        currentColourScheme.getUIColour (ColourScheme::UIColour::windowBackground).getARGB(),
 

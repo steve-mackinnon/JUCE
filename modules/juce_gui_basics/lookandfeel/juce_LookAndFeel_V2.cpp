@@ -1681,14 +1681,16 @@ Slider::SliderLayout LookAndFeel_V2::getSliderLayout (Slider& slider)
         {
             layout.textBoxBounds.setWidth (textBoxWidth);
             layout.textBoxBounds.setHeight (textBoxHeight);
+            layout.textBoxBounds.setX((localBounds.getWidth() - textBoxWidth) / 2);
+            layout.textBoxBounds.setY((localBounds.getHeight() - textBoxHeight) / 2);
 
-            if (textBoxPos == Slider::TextBoxLeft)           layout.textBoxBounds.setX (0);
-            else if (textBoxPos == Slider::TextBoxRight)     layout.textBoxBounds.setX (localBounds.getWidth() - textBoxWidth);
-            else /* above or below -> centre horizontally */ layout.textBoxBounds.setX ((localBounds.getWidth() - textBoxWidth) / 2);
-
-            if (textBoxPos == Slider::TextBoxAbove)          layout.textBoxBounds.setY (0);
-            else if (textBoxPos == Slider::TextBoxBelow)     layout.textBoxBounds.setY (localBounds.getHeight() - textBoxHeight);
-            else /* left or right -> centre vertically */    layout.textBoxBounds.setY ((localBounds.getHeight() - textBoxHeight) / 2);
+//            if (textBoxPos == Slider::TextBoxLeft)           layout.textBoxBounds.setX (0);
+//            else if (textBoxPos == Slider::TextBoxRight)     layout.textBoxBounds.setX (localBounds.getWidth() - textBoxWidth);
+//            else /* above or below -> centre horizontally */ layout.textBoxBounds.setX ((localBounds.getWidth() - textBoxWidth) / 2);
+//
+//            if (textBoxPos == Slider::TextBoxAbove)          layout.textBoxBounds.setY (0);
+//            else if (textBoxPos == Slider::TextBoxBelow)     layout.textBoxBounds.setY (localBounds.getHeight() - textBoxHeight);
+//            else /* left or right -> centre vertically */    layout.textBoxBounds.setY ((localBounds.getHeight() - textBoxHeight) / 2);
         }
     }
 
@@ -1702,10 +1704,10 @@ Slider::SliderLayout LookAndFeel_V2::getSliderLayout (Slider& slider)
     }
     else
     {
-        if (textBoxPos == Slider::TextBoxLeft)       layout.sliderBounds.removeFromLeft (textBoxWidth);
-        else if (textBoxPos == Slider::TextBoxRight) layout.sliderBounds.removeFromRight (textBoxWidth);
-        else if (textBoxPos == Slider::TextBoxAbove) layout.sliderBounds.removeFromTop (textBoxHeight);
-        else if (textBoxPos == Slider::TextBoxBelow) layout.sliderBounds.removeFromBottom (textBoxHeight);
+//        if (textBoxPos == Slider::TextBoxLeft)       layout.sliderBounds.removeFromLeft (textBoxWidth);
+//        else if (textBoxPos == Slider::TextBoxRight) layout.sliderBounds.removeFromRight (textBoxWidth);
+//        else if (textBoxPos == Slider::TextBoxAbove) layout.sliderBounds.removeFromTop (textBoxHeight);
+//        else if (textBoxPos == Slider::TextBoxBelow) layout.sliderBounds.removeFromBottom (textBoxHeight);
 
         const int thumbIndent = getSliderThumbRadius (slider);
 
