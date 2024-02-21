@@ -39,13 +39,13 @@ void ResamplingAudioSource::setResamplingRatio (const double samplesInPerOutputS
 {
     jassert (samplesInPerOutputSample > 0);
 
-    const SpinLock::ScopedLockType sl (ratioLock);
+    // const SpinLock::ScopedLockType sl (ratioLock);
     ratio = jmax (0.0, samplesInPerOutputSample);
 }
 
 void ResamplingAudioSource::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-    const SpinLock::ScopedLockType sl (ratioLock);
+    // const SpinLock::ScopedLockType sl (ratioLock);
 
     auto scaledBlockSize = roundToInt (samplesPerBlockExpected * ratio);
     input->prepareToPlay (scaledBlockSize, sampleRate * ratio);
@@ -62,7 +62,7 @@ void ResamplingAudioSource::prepareToPlay (int samplesPerBlockExpected, double s
 
 void ResamplingAudioSource::flushBuffers()
 {
-    const ScopedLock sl (callbackLock);
+    // const ScopedLock sl (callbackLock);
 
     buffer.clear();
     bufferPos = 0;
@@ -79,14 +79,9 @@ void ResamplingAudioSource::releaseResources()
 
 void ResamplingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
-    const ScopedLock sl (callbackLock);
+    // const ScopedLock sl (callbackLock);
 
-    double localRatio;
-
-    {
-        const SpinLock::ScopedLockType ratioSl (ratioLock);
-        localRatio = ratio;
-    }
+    double localRatio = ratio;
 
     if (lastRatio != localRatio)
     {
